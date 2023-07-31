@@ -20,9 +20,6 @@ hamburger.addEventListener('click', function(){
     navMenu.classList.toggle('hidden');
 });
 
-// // Button Mulai
-// const buttonStarted = document.getElementById("button-started").onclick = function () {
-//     location.href = "/login";
-// }
+
 
 
