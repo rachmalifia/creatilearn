@@ -22,7 +22,6 @@
                         <form action="/discussion/comment/likes/{{ $comment->id }}" method="POST"> 
                             @method('put') 
                             @csrf
-                            {{-- <input type="hidden" name="comment_id" id="comment_id" value="{{ $comment->id }}" /> --}}
                             <input type="hidden" name="likes" id="likes" value="{{ $comment->likes+1 }}">
                             <button class="btn btn-counter w-auto btn-sm rounded-r-none capitalize">
                                 <span class="text-sm">Setuju</span>
@@ -65,9 +64,8 @@
             @csrf
             <textarea id="body" name="body" rows="1" class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none  focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 mb-1" placeholder="Ketikan pendapatmu.."></textarea>
             <input type="hidden" name="discussion_id" id="discussion_id" value="{{ $discussion_id }}" />
-            
             <input type="hidden" name="likes" id="likes" value="0" />
-            
+            <input type="hidden" name="parent_id" id="parent_id" value="{{ $comment->id }}" />
             <div class="mb-3">
                 <input type="submit" class="btn btn-sm capitalize" value="Reply" />
             </div>

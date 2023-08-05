@@ -143,6 +143,7 @@ Route::middleware(['auth', 'user-access:student'])->group(function () {
     Route::get('/groups/{course}/{subject}', [GroupController::class, 'showGroupsToStudent']);
     Route::get('/discussion/{subject}/{group}', [DiscussionController::class, 'showDiscussion']);
     Route::put('/discussion/{subject}/{discussion}', [DiscussionController::class, 'addProjectResult']);
+    Route::get('/discussion/{subject}/{discussion}/idea', [DiscussionController::class, 'showIdeasperGroup']);
 
     // Route for display questions view for student 
     Route::get('{subject}/{question:code}', [QuestionController::class, 'showQuestionList']);

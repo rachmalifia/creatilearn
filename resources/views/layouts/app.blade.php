@@ -30,7 +30,7 @@
         @yield('content')
     </main>
 
-    <footer>
+    <footer class="footer footer-center p-4 bg-neutral text-neutral-content">
         @include('layouts.footer')
     </footer>
     {{-- Local JS --}}

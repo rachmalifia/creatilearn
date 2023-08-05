@@ -23,12 +23,15 @@ class CommentController extends Controller
             'body' => 'required',
         ]);
 
+        $discussion = Discussion::where('id', $request->discussion_id)->first();
+        $subject = Subject::where('id', $discussion->subject_id)->first();
+
         $validatedData = $request->all();
         $validatedData['user_id'] = auth()->user()->id;
 
+        // dd($request->all());
         Comment::create($validatedData);
-
-        return back();
+        return redirect('/discussion' . '/' . $subject->slug . '/' . $discussion->id . '/idea');
     }
 
     public function save(string $id, Request $request)
@@ -42,20 +45,4 @@ class CommentController extends Controller
 
         return back();
     }
-
-    // public function save($comment_id, $likes)
-    // {
-
-    //     $comment = Comment::find($comment_id);
-    //     $co
-    //     $comment->likes = $likes;
-    //     $comment->save();
-
-    //     // dd($comment);
-    //     // Comment::where('id', $comment_id)->update(
-    //     //     ['likes' => $likes]
-    //     // );
-
-    //     // return back();
-    // }
 }

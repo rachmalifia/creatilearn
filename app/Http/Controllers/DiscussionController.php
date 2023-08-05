@@ -177,6 +177,25 @@ class DiscussionController extends Controller
         return redirect('/course' . '/' . $course->slug)->with('success', 'Hasil pengerjaan kelompok berhasil terkumpulkan!');
     }
 
+    public function showIdeasperGroup(string $slug, string $discussionId)
+    {
+        $subject = Subject::where('slug', $slug)->first();
+
+        $discussion = Discussion::select('id', 'group_id',  'case_study', 'project_result')->where('id', $discussionId)->first();
+
+
+        $course = Course::where('id', $subject->course_id)->first();
+        $group = Group::where('id', $discussion->group_id)->first();
+
+
+        return view('discuss.showAllComments', [
+            'discussion' => $discussion,
+            'course' => $course,
+            'subject' => $subject,
+            'group' => $group
+        ]);
+    }
+
 
 
     // /**

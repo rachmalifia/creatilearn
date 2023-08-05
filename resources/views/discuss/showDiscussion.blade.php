@@ -24,48 +24,18 @@
     <div>
       <iframe class="w-2/3 h-screen mx-auto" src="{{ $discussion->case_study }}" frameborder="0"></iframe>
     </div>
-    <a class="btn btn-sm capitalize mt-8 mb-3" href="https://docs.google.com/document/d/1PeR3WixpRynnXBTqUdcO7WNUYazeD96kFpzB6KKoHiA/edit?usp=sharing" target="_blank">Template jawaban</a>
-    <hr/>
-    <div>
-      {{-- <a class="btn btn-sm normal-case my-4" href="https://padlet.com/rachmaalifia28/diskusi-kelompok-iyavut1yo13oarwu">Link diskusi</a> --}}
-      <form method="POST" action="/discussion/{{ $subject->slug }}/{{ $discussion->id }}">
-        @method('put')
-        @csrf
-        <input type="hidden" name="case_study" id="case_study" value="{{ $discussion->case_study }}">
-        <input type="hidden" name="group_id" id="group_id" value="{{ $discussion->group_id }}">
-        <input type="hidden" name="subject_id" id="subject_id" value="{{ $discussion->subject_id }}">
-        <div class="sm:col-span-4">
-          <label for="project_result" class="block text-xs md:text-base font-semibold text-gray-900 mt-2">Pengumpulan hasil pengerjaan</label>
-          <div class="mt-2">
-              <textarea id="project_result" name="project_result" rows="2" class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none  focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6" required placeholder="Masukkan link google docs hasil pengerjaan">{{ $discussion->project_result }}</textarea>
-              @error('project_result')
-                  <div>
-                      <p class="text-red-500 text-sm m-1">
-                          {{ $message }}
-                      </p>                      
-                  </div>
-              @enderror
-          </div>
-        </div>
-        <button type="submit" class="btn btn-warning capitalize mt-2">Kumpulkan</button>
-      </form>
-    </div>
     <hr class="mt-8"/>
-    <div class="flex justify-between items-center mt-2 mb-4">
+    {{-- <div class="flex justify-between items-center mt-2 mb-4">
       <h2 class="text-xs md:text-lg font-semibold text-gray-900 ">Diskusi</h2>
-    </div>
-    @include('discuss.commentsDisplay', ['comments' => $discussion->comments, 'discussion_id' => $discussion->id])
-    {{-- {{ dd($comments) }} --}}
-
-    <hr class="mt-8"/>
+    </div> --}}
+    {{-- @include('discuss.commentsDisplay', ['comments' => $discussion->comments, 'discussion_id' => $discussion->id]) --}}
+    {{-- <hr class="mt-8"/> --}}
     <div class="flex justify-between items-center mt-2 mb-2">
-      <h2 class="text-xs md:text-lg font-semibold text-gray-900 ">Tambahkan pendapat</h2>
+      <h2 class="text-xs md:text-lg font-semibold text-gray-900 ">Masukkan pendapat</h2>
     </div>
-    {{-- <h4>Add comment</h4> --}}
-    {{-- <form method="post" action="{{ route('comments.store'   ) }}"> --}}
     <form method="POST" action="/discussion/comment">
         @csrf
-        <textarea id="body" name="body" rows="4" class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none  focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 mb-2" placeholder="Ketikan pendapatmu.."></textarea>
+        <textarea id="body" name="body" rows="4" class="block w-full rounded-md border-0 py-1.5 px-3 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:outline-none  focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 mb-2"  required placeholder="Ketikan pendapatmu.."></textarea>
         @error('body')
           <div>
               <p class="text-red-500 text-sm m-1">
@@ -77,7 +47,31 @@
         <input type="hidden" name="user_id" id="user_id" value="{{ auth()->user()->id }}" />
         <input type="hidden" name="likes" id="likes" value="0" />
         
-        <button type="submit" class="btn btn-warning capitalize">Kirim</button>
+        {{-- <button type="submit" class="btn btn-warning capitalize">Kirim</button> --}}
+        <!-- The button to open modal -->
+        <label for="my_modal" class="btn btn-warning text-sm capitalize">Kirim</label>
+
+        <!-- Put this part before </body> tag -->
+        <input type="checkbox" id="my_modal" class="modal-toggle" />
+        <div class="modal md:modal-bottom">
+          <div class="modal-box">
+            <h3 class="font-bold">Konfirmasi</h3>
+            <div class="alert mt-1 p-2">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="stroke-info shrink-0 w-6 h-6 md:w-6 md:h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+              <span>Setelah mengirimkan, kamu tidak bisa mengubahnya</span>
+            </div>
+            <div class="py-4">
+              <p>Apakah kamu yakin mengirimkan pendapatmu?</p>
+              <p class="mt-2">Jangan khawatirkan pendapat salah! Karena tahap ini merupakan bagian dari proses belajar mu! &#128521;</p>
+            </div>
+            <div class="modal-action">
+              <label for="my_modal" class="btn capitalize">Batalkan</label>
+              <a>
+                  <button class="btn btn-neutral capitalize" type="submit">Ya</button>
+              </a>
+            </div>
+          </div>
+        </div>
     </form>
   </div>
 </div>
