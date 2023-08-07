@@ -45,7 +45,7 @@
 
                 <!-- Put this part before </body> tag -->
                 <input type="checkbox" id="my_modal_6" class="modal-toggle" />
-                <div class="modal modal-bottom sm:modal-middle">
+                <div class="modal">
                 <div class="modal-box">
                     <h3 class="font-bold">Konfirmasi</h3>
                     <p class="py-4">Apakah Anda yakin akan menyelesaikan ujian?</p>

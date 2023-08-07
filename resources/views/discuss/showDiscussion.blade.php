@@ -53,7 +53,7 @@
 
         <!-- Put this part before </body> tag -->
         <input type="checkbox" id="my_modal" class="modal-toggle" />
-        <div class="modal md:modal-bottom">
+        <div class="modal">
           <div class="modal-box">
             <h3 class="font-bold">Konfirmasi</h3>
             <div class="alert mt-1 p-2">

@@ -33,7 +33,7 @@
         <li><a href="/dashboard/student-group" class="hover:text-primary">Diskusi</a></li>
       @endif
       @if (auth()->user()->type == 'student')
-        <li><a href="/courses" class="hover:text-primary">Beranda</a></li>
+        {{-- <li><a href="/courses" class="hover:text-primary">Beranda</a></li> --}}
         {{-- <li><a href="/results" class="hover:text-primary">Hasil Belajar</a></li> --}}
       @endif
     </ul>

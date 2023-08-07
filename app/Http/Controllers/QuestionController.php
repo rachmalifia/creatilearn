@@ -189,7 +189,7 @@ class QuestionController extends Controller
         $rules = [
             'subject_id' => 'required',
             'code' => 'required',
-            'question' => 'required|max:200',
+            'question' => 'required|max:255',
             'img_question' => 'image|file|max:1024',
             'option_a' => 'required',
             'option_b' => 'required',

@@ -65,6 +65,8 @@ class StudentResultController extends Controller
             $i++;
         }
 
+        $jumlahSoal = $i;
+        $total = round(($total / $jumlahSoal) * 100.00, 2);
         $request['user_id'] = auth()->user()->id;
         $request['score'] = $total;
 
