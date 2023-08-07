@@ -70,8 +70,6 @@
                         </ul>
                     </div>
                     <div class="card-actions justify-end mt-2">
-                        {{-- '/{{ $subject->slug }}/' {{ $questions[0]->code }} --}}
-                        {{-- {{ $questions[0]->code == 'pretest' ? '/' . $subject->slug . '/pretest' : '/' . $subject->slug . '/posttest' }} --}}
                         <a href="{{ '/' . $subject->slug . '/' . $questions[0]->code }}" >
                             <button class="btn btn-warning normal-case">Mulai</button>
                         </a>
